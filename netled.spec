@@ -1,5 +1,5 @@
-Summary:	NetLED monitors the RD and SD of interfaces using the LEDs on your keyboard.
-Summary(pl):	NetLED powiadamia o zdarzeniach RD (Receive Data) i SD (Send Data) na dowolnym interfejsie sieciowym.
+Summary:	NetLED monitors the RD and SD of interfaces using the LEDs on your keyboard
+Summary(pl):	NetLED powiadamia o zdarzeniach RD (Receive Data) i SD (Send Data) na dowolnym interfejsie sieciowym
 Name:		netled
 Version:	3.0
 Release:	1
@@ -27,11 +27,10 @@ dowolnym interfejsie sieciowym.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__install} -d $RPM_BUILD_ROOT%{_sbindir}
+%{__install} -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_sysconfdir}}
+
 %{__install} netled $RPM_BUILD_ROOT%{_sbindir}
-%{__install} -d $RPM_BUILD_ROOT%{_mandir}/man8
 %{__install} netled.1 $RPM_BUILD_ROOT%{_mandir}/man8/netled.8
-%{__install} -d $RPM_BUILD_ROOT%{_sysconfdir}
 %{__install} netled.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 gzip -9nf netled-3.0.lsm
@@ -41,7 +40,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/*
-%{_mandir}/man8/*
-%config %{_sysconfdir}/*
 %doc *.gz
+%attr(755,root,root) %{_sbindir}/*
+%config %{_sysconfdir}/*
+%{_mandir}/man8/*
