@@ -31,14 +31,12 @@ install netled $RPM_BUILD_ROOT%{_sbindir}
 install netled.1 $RPM_BUILD_ROOT%{_mandir}/man8/netled.8
 install netled.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
-gzip -9nf netled-3.0.lsm
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc netled-3.0.lsm
 %attr(755,root,root) %{_sbindir}/*
 %config %{_sysconfdir}/*
 %{_mandir}/man8/*
