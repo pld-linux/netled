@@ -1,13 +1,14 @@
-Summary:	NetLED monitors the RD and SD of interfaces using the LEDs on your keyboard
-Summary(pl):	NetLED powiadamia o zdarzeniach RD (Receive Data) i SD (Send Data) na dowolnym interfejsie sieciowym
+Summary:	NetLED - interfaces RD and SD monitoring using the LEDs on your keyboard
+Summary(pl):	NetLED - powiadamianie o zdarzeniach RD i SD na dowolnym interfejsie sieciowym
 Name:		netled
-Version:	3.0
+# 5.0.0a looks too messy, problaby some work-in-progress
+Version:	4.0.10
 Release:	1
 License:	GPL
 Group:		Applications/Networking
-Source0:	http://mars.ark.com/~mbevan/netled/files/%{name}-%{version}.tar.gz
-# Source0-md5:	be7f707722bfbae68cb162f378c925ab
-URL:		http://mars.ark.com/~mbevan/products/netled.shtml
+Source0:	http://ftp.marginsoftware.com/subdomains/ftp/pub/software/linux/netled/%{name}-%{version}.tar.bz2
+# Source0-md5:	17377504fe7c47685b460f3af6a2d4fe
+# 404 URL:	http://www.marginsoftware.com/products/netled/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -22,22 +23,26 @@ dowolnym interfejsie sieciowym.
 %setup -q
 
 %build
-%{__make}
+%{__make} -C src \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -DNDEBUG -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_sysconfdir}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man{5,8},%{_sysconfdir}}
 
-install netled $RPM_BUILD_ROOT%{_sbindir}
-install netled.1 $RPM_BUILD_ROOT%{_mandir}/man8/netled.8
-install netled.conf $RPM_BUILD_ROOT%{_sysconfdir}
+install src/netled $RPM_BUILD_ROOT%{_sbindir}
+install doc/netled.1 $RPM_BUILD_ROOT%{_mandir}/man8/netled.8
+install doc/netled.conf.5 $RPM_BUILD_ROOT%{_mandir}/man5/netled.conf.5
+install data/netled.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc netled-3.0.lsm
-%attr(755,root,root) %{_sbindir}/*
-%config %{_sysconfdir}/*
-%{_mandir}/man8/*
+%doc CHANGES README TODO
+%attr(755,root,root) %{_sbindir}/netled
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/netled.conf
+%{_mandir}/man5/netled.conf.5*
+%{_mandir}/man8/netled.8*
