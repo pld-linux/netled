@@ -5,8 +5,6 @@ Version:	3.0
 Release:	1
 License:	GPL
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Source0:	http://mars.ark.com/~mbevan/netled/files/%{name}-%{version}.tar.gz
 URL:		http://mars.ark.com/~mbevan/products/netled.shtml
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
