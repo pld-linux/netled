@@ -25,11 +25,11 @@ dowolnym interfejsie sieciowym.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__install} -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_sysconfdir}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_sysconfdir}}
 
-%{__install} netled $RPM_BUILD_ROOT%{_sbindir}
-%{__install} netled.1 $RPM_BUILD_ROOT%{_mandir}/man8/netled.8
-%{__install} netled.conf $RPM_BUILD_ROOT%{_sysconfdir}
+install netled $RPM_BUILD_ROOT%{_sbindir}
+install netled.1 $RPM_BUILD_ROOT%{_mandir}/man8/netled.8
+install netled.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 gzip -9nf netled-3.0.lsm
 
