@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://mars.ark.com/~mbevan/netled/files/%{name}-%{version}.tar.gz
+# Source0-md5:	be7f707722bfbae68cb162f378c925ab
 URL:		http://mars.ark.com/~mbevan/products/netled.shtml
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
