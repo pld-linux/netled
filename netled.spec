@@ -43,6 +43,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGES README TODO
 %attr(755,root,root) %{_sbindir}/netled
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/netled.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/netled.conf
 %{_mandir}/man5/netled.conf.5*
 %{_mandir}/man8/netled.8*
