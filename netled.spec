@@ -1,5 +1,5 @@
 Summary:	NetLED - interfaces RD and SD monitoring using the LEDs on your keyboard
-Summary(pl.UTF-8):   NetLED - powiadamianie o zdarzeniach RD i SD na dowolnym interfejsie sieciowym
+Summary(pl.UTF-8):	NetLED - powiadamianie o zdarzeniach RD i SD na dowolnym interfejsie sieciowym
 Name:		netled
 # 5.0.0a looks too messy, problaby some work-in-progress
 Version:	4.0.10
